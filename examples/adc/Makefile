@@ -1,12 +1,12 @@
 TARGET = adc
 
 C_FILES = \
-	main.c \
+	src/main.c \
 	../../include/debug.c \
 	../../include/adc.c
 
 
 pre-flash:
-	
+
 
 include ../Makefile.include
