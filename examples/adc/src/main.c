@@ -69,8 +69,9 @@ void main( )
 
     while(1)                                                                   // ADC query method
     {
-      for(i=0;i<4;i++){
-		 printf("AIN%02x \n",(uint16_t)i);
+      for(i=0;i<4;i++)
+      {
+        printf("AIN%02x \n",(uint16_t)i);
         ADC_ChannelSelect( i );                                                // Initialize ADC sampling
         ADC_START = 1;                                                         //Start sampling, enter interrupt when sampling is completed
         while(ADC_START){};                                                      //When ADC_START becomes 0, it means sampling is completed

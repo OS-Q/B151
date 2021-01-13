@@ -1,10 +1,9 @@
 TARGET = blink
 
 C_FILES = \
-	main.c \
+	src/main.c \
 	../../include/debug.c
 
 pre-flash:
-	
 
 include ../Makefile.include
