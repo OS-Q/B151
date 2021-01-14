@@ -1,4 +1,4 @@
-﻿
+
 /********************************** (C) COPYRIGHT *******************************
 * File Name          : ADC.C
 * Author             : WCH
@@ -7,7 +7,7 @@
 * Description        : CH554ADC sampling clock setting, ADC channel setting function, voltage comparison mode setting
 *******************************************************************************/
 
-#include "ch554.h"                                                          
+#include "ch554.h"
 #include "debug.h"
 #include "adc.h"
 #include "stdio.h"
@@ -20,8 +20,8 @@
 * Function Name  : ADCInit(uint8_t div)
 * Description    : ADC sampling clock setting, module is turned on, interrupt is turned on
 * Input          : uint8_t speed clock setting
-                   1 Slow 384 Fosc                   								
-                   0 Fast 96 Fosc									 
+                   1 Slow 384 Fosc
+                   0 Fast 96 Fosc
 * Output         : None
 * Return         : None
 *******************************************************************************/
@@ -68,13 +68,13 @@ uint8_t VoltageCMPModeInit(uint8_t fo,uint8_t re)
     if(re == 1){
       if(fo == 0) {ADC_CHAN1 =0;ADC_CHAN0=0;CMP_CHAN =0;}                      // AIN0 and AIN1
       else if(fo == 2) {ADC_CHAN1 =1;ADC_CHAN0=0;CMP_CHAN =0;}                 //AIN2 and AIN1
-      else if(fo == 3) {ADC_CHAN1 =1;ADC_CHAN0=1;CMP_CHAN =0; }                //AIN3 and AIN1			
+      else if(fo == 3) {ADC_CHAN1 =1;ADC_CHAN0=1;CMP_CHAN =0; }                //AIN3 and AIN1
       else return FAIL;
-    }			     
+    }
     else if(re == 3){
       if(fo == 0) {ADC_CHAN1 =0;ADC_CHAN0=0;CMP_CHAN =0;}                      //AIN0 and AIN1
       else if(fo == 1) {ADC_CHAN1 =0;ADC_CHAN0=1;CMP_CHAN =0;}                 //AIN1 and AIN1
-      else if(fo == 2) {ADC_CHAN1 =1;ADC_CHAN0=0;CMP_CHAN =0;}                 //AIN2 and AIN1		
+      else if(fo == 2) {ADC_CHAN1 =1;ADC_CHAN0=0;CMP_CHAN =0;}                 //AIN2 and AIN1
       else return FAIL;
     }
     else return FAIL;
@@ -88,23 +88,23 @@ uint8_t VoltageCMPModeInit(uint8_t fo,uint8_t re)
 
 #if ADC_INTERRUPT
 
-// Must be copied into main if ADC is interrupt driven 
+// Must be copied into main if ADC is interrupt driven
 /*******************************************************************************
 * Function Name  : ADCInterrupt(void)
 * Description    : ADC Interrupt service routine
 *******************************************************************************/
 /*
 void	ADCInterrupt(void) __interrupt(INT_NO_ADC)                        //ADC interrupt service routine, using register set 1
-{ 
+{
     if(ADC_IF ==  1)                                                          //ADC complete interrupt
-    { 
+    {
       UserData = ADC_DATA;                                                    //Take ADC sampling data
       ADC_IF = 0;		                                                          //Clear ADC interrupt flag
 	  printf(" %d ",UserData);
     }
     if(CMP_IF ==  1)                                                          //Voltage comparison complete interrupt
-    {	
-//       UserData = ADC_CTRL&0x80 >> 7);	                                        //Save comparator result		
+    {
+//       UserData = ADC_CTRL&0x80 >> 7);	                                        //Save comparator result
       CMP_IF = 0;		                                                          //Clear Comparator Complete Interrupt
     }
 }

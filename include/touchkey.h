@@ -1,7 +1,7 @@
-﻿#pragma once
+#pragma once
 
 //#define INTERRUPT_TouchKey   0                                                 //Open TouchKey interrupt mode
-#define KEY_FIRST            0                                                 //Sampling start channel                             
+#define KEY_FIRST            0                                                 //Sampling start channel
 #define KEY_LAST             3                                                 //End of sampling channel
 #define KEY_ACT              20                                                // Button is pressed, the channel sampling value decreases, the value decreases, the sensitivity is high, the value increases, the sensitivity is low
 #define KEY_BASE_SAMPLE_TIME 5                                                 //Sampling reference value Sampling times, in order to obtain a stable channel reference value
@@ -18,7 +18,7 @@ extern volatile uint8_t	KeyBuf;                                                /
 * Function Name  : TouchKeyChannelSelect(UINT8 ch)
 * Description    : Touch key channel selection
 * Input          : UINT8 ch Use channel
-                   0: Turn off the capacitance detection, only for 1ms or 2ms timer interrupt                   
+                   0: Turn off the capacitance detection, only for 1ms or 2ms timer interrupt
                    1~6 Representing sampling channels
                    7: Turn on capacitance detection, but do not connect the channel
 * Output         : None
@@ -30,11 +30,11 @@ uint8_t TouchKeyChannelSelect(uint8_t ch);
 /*******************************************************************************
 * Function Name  : GetTouchKeyFree()
 * Description    : Get the value of the touch button idle state
-* Input          : None								 
+* Input          : None
 * Output         : None
 * Return         : None
 *******************************************************************************/
-void GetTouchKeyFree();  
+void GetTouchKeyFree();
 
 #if !INTERRUPT_TouchKey
 /*******************************************************************************
