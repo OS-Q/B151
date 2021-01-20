@@ -98,9 +98,9 @@ void	ADCInterrupt(void) __interrupt(INT_NO_ADC)                        //ADC int
 {
     if(ADC_IF ==  1)                                                          //ADC complete interrupt
     {
-      UserData = ADC_DATA;                                                    //Take ADC sampling data
-      ADC_IF = 0;		                                                          //Clear ADC interrupt flag
-	  printf(" %d ",UserData);
+        UserData = ADC_DATA;                                                    //Take ADC sampling data
+        ADC_IF = 0;		                                                          //Clear ADC interrupt flag
+        printf(" %d ",UserData);
     }
     if(CMP_IF ==  1)                                                          //Voltage comparison complete interrupt
     {
